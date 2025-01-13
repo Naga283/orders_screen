@@ -44,7 +44,7 @@ void showFilePickerDialog(BuildContext context, FileDialogBloc fileDialogBloc) {
                   Text(
                     "Upload Photos & Videos",
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.w600,
                         ),
                   ),
                   Padding(
@@ -75,7 +75,7 @@ void showFilePickerDialog(BuildContext context, FileDialogBloc fileDialogBloc) {
                                               .bodySmall
                                               ?.copyWith(
                                                 color: appColors.dropTextCol,
-                                                fontSize: 12,
+                                                fontSize: 10  ,
                                               ),
                                           text:
                                               "Drop your image & video here, or ",
@@ -87,7 +87,7 @@ void showFilePickerDialog(BuildContext context, FileDialogBloc fileDialogBloc) {
                                                   .bodySmall
                                                   ?.copyWith(
                                                     color: appColors.darkBlue,
-                                                    fontSize: 12,
+                                                    fontSize: 10,
                                                   ),
                                             )
                                           ]),
