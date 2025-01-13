@@ -15,8 +15,9 @@ class OrderSummary extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Divider(),
             Padding(
-              padding: const EdgeInsets.only(top: 16.0, bottom: 8),
+              padding: const EdgeInsets.only(top: 14.0, bottom: 10),
               child: Text(
                 "Order Summary",
                 style: Theme.of(context)
@@ -30,7 +31,7 @@ class OrderSummary extends StatelessWidget {
               value: "₹13,349.08",
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 8),
+              padding: EdgeInsets.symmetric(vertical: 10),
               child: OrderDetailsRow(
                 title: 'Discount',
                 value: "(20 %)",
@@ -62,14 +63,14 @@ class OrderSummary extends StatelessWidget {
               Text(
                 "Total",
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w600,
                       fontSize: 16,
                     ),
               ),
               Text(
                 "₹ 11,139.33",
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w700,
                       fontSize: 16,
                     ),
               )

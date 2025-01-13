@@ -1,7 +1,6 @@
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:freelancing/constants/image_constants.dart';
-import 'package:freelancing/screens/orders/bloc/order_state/order_state.dart';
 import 'package:freelancing/screens/orders/bloc/stepper_bloc.dart';
 import 'package:freelancing/screens/orders/components/custom_elevated_button.dart';
 import 'package:freelancing/utils/colors.dart';
@@ -21,11 +20,11 @@ class InvoiceWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16.0),
+      padding: const EdgeInsets.only(top: 8.0, bottom: 20),
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            padding: const EdgeInsets.only(bottom: 8.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -36,6 +35,7 @@ class InvoiceWidget extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                     color: appColors.lightOrange,
                     decoration: TextDecoration.underline,
+                    height: 1.2,
                     decorationColor: appColors.lightOrange,
                   ),
                 ),
@@ -47,6 +47,7 @@ class InvoiceWidget extends StatelessWidget {
                     fontSize: 12,
                     color: appColors.lightViolet,
                   ),
+                  padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                   icon: Image.asset(doumentText),
                 )
               ],
@@ -54,7 +55,7 @@ class InvoiceWidget extends StatelessWidget {
           ),
           DottedLine(
             dashLength: 8,
-            dashGapLength: 5,
+            dashGapLength: 4,
             dashColor: appColors.dashCol,
           ),
         ],

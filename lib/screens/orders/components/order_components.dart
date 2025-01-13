@@ -27,10 +27,10 @@ class OrderDetails extends StatelessWidget {
                   children: [
                     Text(
                       "SAMSUNG",
-                      style: textStyle.bodyLarge?.copyWith(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                      ),
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                          ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
@@ -41,6 +41,7 @@ class OrderDetails extends StatelessWidget {
                         "SAMSUNG Galaxy F05 - Twilight Blue (64 GB, 4 GB RAM)",
                         style: textStyle.bodyLarge?.copyWith(
                           fontWeight: FontWeight.w500,
+                          fontSize: 14,
                         ),
                       ),
                     ),

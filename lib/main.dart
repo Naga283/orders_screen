@@ -5,6 +5,7 @@ import 'package:freelancing/screens/orders/bloc/radio_bloc.dart';
 import 'package:freelancing/screens/orders/bloc/stepper_bloc.dart';
 import 'package:freelancing/screens/orders/bloc/widget_visibililty_bloc.dart';
 import 'package:freelancing/screens/orders/orders_screen.dart';
+import 'package:freelancing/utils/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
@@ -33,7 +34,13 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        fontFamily: GoogleFonts.montserrat().fontFamily,
+        appBarTheme: AppBarTheme(
+          backgroundColor: appColors.white,
+          surfaceTintColor: appColors.white,
+          elevation: 4.0, // Set default elevation for AppBar
+          shadowColor: Colors.black, // Set shadow color if needed
+        ),
+        fontFamily: "Montserrat",
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),

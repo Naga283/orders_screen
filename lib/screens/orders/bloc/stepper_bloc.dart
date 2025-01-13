@@ -35,7 +35,9 @@ class StepperBloc extends Bloc<StepperEvent, StepperState> {
           updatedVisibleSteps = currentState.isExpanded
               ? [
                   allSteps.first,
-                  allSteps.last
+                  currentState.isLastStepCanceled
+                      ? "Cancelled, Wed 25th Dec 24, at 6:12 PM"
+                      : allSteps.last,
                 ] // Show first and last when collapsed
               : allSteps; // Show full steps when expanded
         }

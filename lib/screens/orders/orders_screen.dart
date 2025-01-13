@@ -56,7 +56,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var textStyle = TextTheme.of(context);
+    var textStyle = Theme.of(context).textTheme;
     final radioButtonBloc = BlocProvider.of<RadioButtonBloc>(context);
     final widgetsVisibleBloc = context.watch<WidgetVisibilityBloc>();
     final stepperBloc = context.watch<StepperBloc>();
@@ -70,13 +70,14 @@ class _OrdersScreenState extends State<OrdersScreen> {
     return Scaffold(
       backgroundColor: appColors.white,
       appBar: AppBar(
-        surfaceTintColor: appColors.white,
-        backgroundColor: appColors.white,
+        // surfaceTintColor: appColors.white,
+        // backgroundColor: appColors.white,
         centerTitle: true,
+        elevation: 4.0, // Add elevation here
         title: Text(
           "Track Order",
           style: textStyle.bodyLarge?.copyWith(
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.bold,
             fontSize: 18,
             color: appColors.lightViolet,
           ),
@@ -84,7 +85,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 24),
+          padding: const EdgeInsets.symmetric(horizontal: 17.0, vertical: 24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -92,14 +93,14 @@ class _OrdersScreenState extends State<OrdersScreen> {
                 "Order ID: 3354-6546-5452",
                 style: textStyle.bodyMedium?.copyWith(
                   color: appColors.grey,
-                  fontWeight: FontWeight.w500,
+                  // fontWeight: FontWeight.w800,
                 ),
               ),
               OrderDetails(textStyle: textStyle),
-              SizedBox(height: 12),
+              SizedBox(height: 24),
               DottedLine(
                   dashLength: 8,
-                  dashGapLength: 5,
+                  dashGapLength: 4,
                   dashColor: appColors.dashCol),
               // Check if the state is ShowExchangeOrReturnWidget
               widgetsVisibleBloc.state is ExchangeOrReturnWidgetState
@@ -133,7 +134,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                             ),
                           ],
                         ),
-                        SizedBox(height: 26),
+                        SizedBox(height: 24),
                         VerticalStepper(
                           steps: state.mainSelectedValue != null
                               ? returnSteps
@@ -141,7 +142,6 @@ class _OrdersScreenState extends State<OrdersScreen> {
                           radioBtnState: state,
                         ),
                         Divider(),
-                        SizedBox(height: 16),
                         DeliveryAddress(textStyle: textStyle),
                         NeedHelpWidget(
                           textStyle: textStyle,
@@ -149,7 +149,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                           steps: steps,
                           widgetVisibilityBloc: widgetsVisibleBloc,
                         ),
-                        Divider(),
+                        // Divider(),
                         OrderSummary(),
                       ],
                     ),

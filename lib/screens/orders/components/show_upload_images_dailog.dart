@@ -19,6 +19,7 @@ void showFilePickerDialog(BuildContext context, FileDialogBloc fileDialogBloc) {
         child: BlocBuilder<FileDialogBloc, FileDialogState>(
           builder: (context, state) {
             return AlertDialog(
+              backgroundColor: appColors.white,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
               content: Column(
@@ -47,7 +48,7 @@ void showFilePickerDialog(BuildContext context, FileDialogBloc fileDialogBloc) {
                         ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 15.0),
+                    padding: const EdgeInsets.only(top: 20.0),
                     child: GestureDetector(
                       onTap: () {
                         fileDialogBloc.add(SelectFilesEvent());
@@ -141,6 +142,7 @@ void showFilePickerDialog(BuildContext context, FileDialogBloc fileDialogBloc) {
               actions: [
                 CustomElevatedBtn(
                   btnName: "Upload",
+                  padding: EdgeInsets.symmetric(vertical: 8, horizontal: 22),
                   textStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       fontWeight: FontWeight.w600, color: appColors.white),
                   btnBorderColor:

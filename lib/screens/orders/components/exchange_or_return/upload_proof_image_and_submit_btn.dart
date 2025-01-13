@@ -130,12 +130,14 @@ class UploadProofImageAndSubmit extends StatelessWidget {
                     .textTheme
                     .bodyMedium
                     ?.copyWith(color: appColors.lightOrange),
+                padding: EdgeInsets.symmetric(vertical: 11, horizontal: 17),
               ),
               SizedBox(
                 height: 23,
               ),
               CustomElevatedBtn(
                 btnName: "Submit",
+                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 22),
                 onTap: () async {
                   // Check if the button should be enabled
                   final fileState = context.read<FileDialogBloc>().state;
@@ -187,7 +189,7 @@ class UploadProofImageAndSubmit extends StatelessWidget {
                             null)
                     ? appColors.lightViolet // Enable color when conditions met
                     : Colors.grey,
-                textStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                textStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       color: appColors.white,
                       fontWeight: FontWeight.w600,
                     ),

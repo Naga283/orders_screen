@@ -22,13 +22,15 @@ class VerticalStepper extends StatelessWidget {
       builder: (context, state) {
         if (state is StepperInitial) {
           final visibleSteps = state.visibleSteps;
+          final values = state.isLastStepCanceled;
+          print("valuess :: $values");
 
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ListView.builder(
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 itemCount: visibleSteps.length,
                 itemBuilder: (context, index) {
                   final isActualLastStep = visibleSteps[index] == steps.last;
@@ -36,56 +38,54 @@ class VerticalStepper extends StatelessWidget {
                   final isCurrentStep = index == state.currentStep;
                   final isCanceled =
                       state.isLastStepCanceled && isBelowCurrentStep;
-                  final isFinalStep =
-                      isActualLastStep && !state.isLastStepCanceled;
 
                   // Set color logic based on the isReturned flag
                   Color stepColor;
                   if (state.isReturned) {
-                    // If isReturned is true, use lightOrange for current and previous steps
                     stepColor = (isCurrentStep || index < state.currentStep)
                         ? appColors.lightOrange
                         : appColors.lightViolet;
                   } else {
-                    // If isReturned is false, use lightGreen for current and previous steps
                     stepColor = (isCurrentStep || index < state.currentStep)
                         ? appColors.lightGreen
                         : appColors.lightViolet;
                   }
 
-                  return Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Circle and Line
-                      Column(
-                        children: [
-                          // Step Circle
-                          CircleAvatar(
-                            radius: 8,
-                            backgroundColor: stepColor,
-                            child: Text(
-                              '',
-                              style: TextStyle(color: Colors.white),
+                  return IntrinsicHeight(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // Circle and Line
+                        Column(
+                          children: [
+                            // Step Circle
+                            CircleAvatar(
+                              radius: 8,
+                              backgroundColor:
+                                  isCanceled ? appColors.redCol : stepColor,
+                              child: const Text(
+                                '',
+                                style: TextStyle(color: Colors.white),
+                              ),
                             ),
-                          ),
-                          // Line (Only if not the last visible step)
-                          if (index < visibleSteps.length - 1)
-                            Container(
-                              width: 1,
-                              height: 29,
-                              color: isCanceled
-                                  ? appColors.redCol
-                                  : !isBelowCurrentStep
-                                      ? appColors.lightGreen
-                                      : Colors.grey,
-                            ),
-                        ],
-                      ),
-                      const SizedBox(width: 10),
-                      // Step Title
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 0),
+                            // Line (Only if not the last visible step)
+                            if (index < visibleSteps.length - 1)
+                              Expanded(
+                                child: Container(
+                                  width: 1,
+                                  height: 24,
+                                  color: isCanceled
+                                      ? appColors.redCol
+                                      : !isBelowCurrentStep
+                                          ? appColors.lightGreen
+                                          : Colors.grey,
+                                ),
+                              ),
+                          ],
+                        ),
+                        const SizedBox(width: 10),
+                        // Step Title
+                        Expanded(
                           child: Text(
                             visibleSteps[index],
                             style: Theme.of(context)
@@ -103,34 +103,38 @@ class VerticalStepper extends StatelessWidget {
                                 ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   );
                 },
               ),
-              TextButton(
-                onPressed: state.isExpanded
+              GestureDetector(
+                onTap: state.isExpanded
                     ? () {
                         context.read<StepperBloc>().add(ToggleViewMore());
                       }
                     : () {
                         context.read<StepperBloc>().add(ToggleViewMore());
                       },
-                child: Text(
-                  state.isExpanded
-                      ? 'Hide detailed tracking'
-                      : 'View detailed tracking',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        decoration: TextDecoration.underline,
-                        color: appColors.lightViolet,
-                        decorationColor: appColors.lightViolet,
-                      ),
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 25.0, top: 20),
+                  child: Text(
+                    state.isExpanded
+                        ? 'Hide detailed tracking'
+                        : 'View detailed tracking',
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          decoration: TextDecoration.underline,
+                          height: 1.2,
+                          color: appColors.lightViolet,
+                          decorationColor: appColors.lightViolet,
+                        ),
+                  ),
                 ),
               ),
             ],
           );
         }
-        return SizedBox.shrink();
+        return const SizedBox.shrink();
       },
     );
   }

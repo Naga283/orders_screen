@@ -14,6 +14,7 @@ class AppColors {
   final Color orderDatTextCol = Color(0XFF455F76);
   final Color dashCol = Color(0XFFCECECE);
   final Color redCol = Colors.red;
+  final Color littleLightRed = Color(0XFFFF5252);
   final Color lightGreen = Color(0XFF8CB89F);
   final Color orderIdCol = Color(0XFF919191);
 

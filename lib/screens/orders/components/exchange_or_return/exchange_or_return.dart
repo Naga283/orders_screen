@@ -79,7 +79,7 @@ class ExchangeOrReturnWidget extends StatelessWidget {
                 if (context.watch<RadioButtonBloc>().state.mainSelectedValue !=
                     null)
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 20.0),
+                    padding: const EdgeInsets.only(top: 24.0),
                     child: Text(
                       (state is DisplaySubOptionsState &&
                               state.mainSelectedValue == 'return')
@@ -91,32 +91,42 @@ class ExchangeOrReturnWidget extends StatelessWidget {
                           ),
                     ),
                   ),
+
+                SizedBox(
+                  height: 13,
+                ),
                 // Display sub-options based on the selected main radio button
                 if (state is DisplaySubOptionsState &&
                     state.mainSelectedValue == 'return')
                   ...List.generate(reasonList.length, (index) {
-                    return RadioButton(
-                        value: reasonList[index],
-                        groupValue: state.subSelectedValue,
-                        btnName: reasonList[index],
-                        onChanged: (value) {
-                          radioButtonBloc
-                              .add(SelectSubOptionEvent(value as String));
-                        },
-                        selectedVal: state.subSelectedValue);
+                    return Padding(
+                      padding: EdgeInsets.only(top: 4),
+                      child: RadioButton(
+                          value: reasonList[index],
+                          groupValue: state.subSelectedValue,
+                          btnName: reasonList[index],
+                          onChanged: (value) {
+                            radioButtonBloc
+                                .add(SelectSubOptionEvent(value as String));
+                          },
+                          selectedVal: state.subSelectedValue),
+                    );
                   })
                 else if (state is DisplaySubOptionsState &&
                     state.mainSelectedValue == 'exchange')
                   ...List.generate(exchangeList.length, (index) {
-                    return RadioButton(
-                        value: exchangeList[index],
-                        groupValue: state.subSelectedValue,
-                        btnName: exchangeList[index],
-                        onChanged: (value) {
-                          radioButtonBloc
-                              .add(SelectSubOptionEvent(value as String));
-                        },
-                        selectedVal: state.subSelectedValue);
+                    return Padding(
+                      padding: EdgeInsets.only(top: 8),
+                      child: RadioButton(
+                          value: exchangeList[index],
+                          groupValue: state.subSelectedValue,
+                          btnName: exchangeList[index],
+                          onChanged: (value) {
+                            radioButtonBloc
+                                .add(SelectSubOptionEvent(value as String));
+                          },
+                          selectedVal: state.subSelectedValue),
+                    );
                   }),
               ],
             );

@@ -25,13 +25,15 @@ class RadioButton extends StatelessWidget {
       crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.center,
       children: [
         Radio(
-            value: value,
-            groupValue: groupValue,
-            onChanged: onChanged,
-            activeColor: appColors.lightOrange,
-            fillColor: WidgetStatePropertyAll(selectedVal == value
-                ? appColors.lightOrange
-                : appColors.radioCol)),
+          value: value,
+          groupValue: groupValue,
+          onChanged: onChanged,
+          activeColor: appColors.lightOrange,
+          fillColor: WidgetStatePropertyAll(selectedVal == value
+              ? appColors.lightOrange
+              : appColors.radioCol),
+          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        ),
         Flexible(
           child: Text(
             btnName,

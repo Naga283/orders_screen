@@ -33,7 +33,7 @@ class NeedHelpWidget extends StatelessWidget {
           final isAllStepsCompleted = state.currentStep == steps.length - 1;
 
           return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            padding: const EdgeInsets.only(top: 24.0, bottom: 16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -49,25 +49,10 @@ class NeedHelpWidget extends StatelessWidget {
                   onTap: () {},
                   textColor: appColors.lightViolet,
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    if (state.currentStep < steps.length - 1) {
-                      context
-                          .read<StepperBloc>()
-                          .add(UpdateCurrentStep(state.currentStep + 1));
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: appColors.lightViolet),
-                  child: Text(
-                    "Next Step",
-                    style: textStyle.bodyLarge?.copyWith(color: Colors.white),
-                  ),
-                ),
                 sizedBox,
                 if (isAllStepsCompleted)
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    padding: const EdgeInsets.only(bottom: 8.0),
                     child: HelpButtons(
                       imageName: chat,
                       name: "Want to return product",
@@ -102,13 +87,30 @@ class NeedHelpWidget extends StatelessWidget {
                             ? () {}
                             : () async {
                                 showCancelDailog(
-                                    context, context.read<StepperBloc>(),
-                                    orderId: orderId);
+                                  context,
+                                  context.read<StepperBloc>(),
+                                  orderId: orderId,
+                                );
                               },
                         textColor: isAllStepsCompleted
                             ? appColors.disableCol
-                            : appColors.redCol,
+                            : appColors.littleLightRed,
                       ),
+                ElevatedButton(
+                  onPressed: () {
+                    if (state.currentStep < steps.length - 1) {
+                      context
+                          .read<StepperBloc>()
+                          .add(UpdateCurrentStep(state.currentStep + 1));
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: appColors.lightViolet),
+                  child: Text(
+                    "Next Step",
+                    style: textStyle.bodyLarge?.copyWith(color: Colors.white),
+                  ),
+                ),
               ],
             ),
           );

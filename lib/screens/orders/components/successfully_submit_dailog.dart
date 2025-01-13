@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freelancing/screens/orders/bloc/order_event/order_event.dart';
 import 'package:freelancing/screens/orders/bloc/order_event/widgets_visible_events.dart';
-import 'package:freelancing/screens/orders/bloc/order_state/order_state.dart';
 import 'package:freelancing/screens/orders/bloc/stepper_bloc.dart';
 import 'package:freelancing/screens/orders/bloc/widget_visibililty_bloc.dart';
 import 'package:freelancing/screens/orders/components/custom_elevated_button.dart';
@@ -33,7 +31,7 @@ Future<dynamic> successfullySubmitDailog(
                     child: Icon(
                       Icons.close,
                       size: 20,
-                      color: appColors.lightViolet,
+                      color: appColors.grey,
                     ),
                   ),
                 ],
@@ -52,6 +50,7 @@ Future<dynamic> successfullySubmitDailog(
                 height: 24,
               ),
               CustomElevatedBtn(
+                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 19),
                 btnBorderColor: appColors.lightOrange,
                 btnName: "Continue Shopping",
                 textStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(

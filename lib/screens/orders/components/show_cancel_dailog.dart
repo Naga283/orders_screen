@@ -24,6 +24,8 @@ void showCancelDailog(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
+              titlePadding: EdgeInsets.zero,
+              contentPadding: EdgeInsets.zero,
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -34,12 +36,15 @@ void showCancelDailog(
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
-                        icon: Icon(Icons.close),
+                        icon: Icon(
+                          Icons.close,
+                          color: appColors.grey,
+                        ),
                       )
                     ],
                   ),
                   Image.asset(cancelOrder),
-                  SizedBox(height: 20),
+                  SizedBox(height: 10),
                   Text(
                     "Do you really want to cancel the product?",
                     textAlign: TextAlign.center,
@@ -67,6 +72,7 @@ void showCancelDailog(
                       ],
                     ),
                   ),
+                  SizedBox(height: 20),
                 ],
               ),
               actions: [
@@ -83,16 +89,20 @@ void showCancelDailog(
                                 fontWeight: FontWeight.w600,
                                 color: appColors.white,
                               ),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 34, vertical: 14),
                       btnBorderColor: appColors.lightOrange,
                       bgColor: appColors.lightOrange,
                     ),
-                    SizedBox(width: 10),
+                    SizedBox(width: 20),
                     CustomElevatedBtn(
                       btnName: "Yes",
                       onTap: () {
                         context.read<StepperBloc>().add(CancelLastStep());
                         Navigator.pop(context);
                       },
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 34, vertical: 14),
                       textStyle:
                           Theme.of(context).textTheme.bodyLarge?.copyWith(
                                 fontWeight: FontWeight.w600,
